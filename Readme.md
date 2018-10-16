@@ -21,4 +21,16 @@ python bot.py
 
 **_Deployment with [heroku](https://www.heroku.com/)_**
 
+```sh
+git clone https://github.com/auredentan/DiscordWithDbBot.git
+cd DiscordWithDbBot
+heroku login
+heroku create
+heroku config:set BOT_TOKEN="your_bot_token"
+git add .
+git commit -m "Whatever"
+git push heroku master
+heroku ps:scale worker=1
+```
 
+You can also add the token, launch and monitor your app via their website.
