@@ -19,6 +19,6 @@ pip install -r requirements.txt
 python bot.py
 ```
 
-**_Deployment with [heroku](https://zeit.co/now)_**
+**_Deployment with [heroku](https://www.heroku.com/)_**
 
 
