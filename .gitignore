@@ -112,3 +112,9 @@ dmypy.json
 
 #vscode
 .vscode
+
+#db
+*.db
+
+#logs
+*.log
