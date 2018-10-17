@@ -1,12 +1,14 @@
 import discord
 from discord.ext import commands
 from db.models import Member
+import logging
 
 
 class Level:
     def __init__(self, bot, session=None):
         self.bot = bot
         self.session = session
+        self.logger = logging.getLogger('DiscordBDBot.Level')
 
     async def on_message(self, message):
         author = message.author.name
@@ -25,22 +27,21 @@ class Level:
 
         except Exception as error:
             await self.bot.say('Could not complete your command')
-            print(error)
+            self.logger.error(error)
 
-    async def add_exp(self, user):
+    async def add_exp(self, id):
         """
             Add experience to a user in the database 
 
             Args:
                 user (object): a discord author
         """
-        id = user.id
         try:
             self.session.query(Member).filter(Member.id == id).first().experience += 5            
             self.session.commit()
-        except:
+        except Exception as error:
             self.session.rollback()
-            raise
+            self.logger.error(error)
 
     async def level_up(self, user, channel):
         """
@@ -62,9 +63,9 @@ class Level:
                 self.session.query(Member).filter(Member.id == id).first().level += 1                
                 self.session.commit()
                 await self.bot.send_message(channel, '{} has leveled up to level {}'.format(user.mention, next_level))
-            except:
+            except Exception as error:
                 self.session.rollback()
-                raise
+                self.logger.error(error)
 
 def setup(bot, kwargs):
     bot.add_cog(Level(bot, **kwargs))

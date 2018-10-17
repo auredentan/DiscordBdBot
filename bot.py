@@ -6,8 +6,15 @@ from sqlalchemy.orm import sessionmaker
 from datetime import datetime
 import importlib
 
-
 from db.models import Base, Event, Member, Attendance
+
+import logging
+
+logger = logging.getLogger('DiscordBDBot')
+logger.setLevel(logging.DEBUG)
+handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
+handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
+logger.addHandler(handler)
 
 engine = create_engine('sqlite:///event-bot.db', echo=False)
 Session = sessionmaker(bind=engine)
@@ -30,11 +37,13 @@ async def on_ready():
     print('---------------')
     print('This bot is ready for action!')
 
-
+helper = {}
 cogs = [
     ('ping', {}),
     ('event', {'session': session}),
-    ('level', {'session': session})
+    ('level', {'session': session}),
+    ('custom_command', {'session': session}),
+    ('stats', {'session': session}),
     ]
 
 if __name__ == '__main__':
@@ -45,12 +54,13 @@ if __name__ == '__main__':
             print("{} has been setup correctly !".format(cog))
         except Exception as error:
             print('{} cannot be loaded. [{}]'.format(cog, error))
+            logger.error(error)
     
     try:
         bot.run(token)
     except Exception as e:
         print('Could Not Start Bot')
-        print(e)
+        logger.error(error)
     finally:
         print('Closing Session')
         session.close()

@@ -29,3 +29,9 @@ class Member(Base):
     level = Column(INTEGER)
     experience = Column(INTEGER)
 
+class Command(Base):
+    __tablename__ = 'command'
+    name = Column(TEXT, primary_key=True, nullable=False)
+    description = Column(TEXT)
+    content = Column(TEXT)
+

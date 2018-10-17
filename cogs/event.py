@@ -4,6 +4,7 @@ from sqlalchemy import engine, create_engine
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime
 from tabulate import tabulate
+import logging
 
 from db.models import Base, Event, Member, Attendance
 
@@ -11,6 +12,8 @@ class EventCmd:
     def __init__(self, bot, session=None):
         self.bot = bot
         self.session = session
+        self.logger = logging.getLogger('DiscordBDBot.Event')
+
 
     @commands.command(pass_context=True)
     async def create(self, ctx, name: str, date: str, time: str='0:00am'):
@@ -27,7 +30,7 @@ class EventCmd:
             await self.bot.say('Event {} created successfully for {}'.format(name, event.date))
         except Exception as e:
             await self.bot.say('Could not complete your command')
-            print(e)
+            self.logger.error(e)
 
     @commands.command(pass_context=True)
     async def attend(self, ctx, name: str):
@@ -58,7 +61,7 @@ class EventCmd:
             await self.bot.say('Member {} is now attending event {}'.format(author, name))
         except Exception as e:
             await self.bot.say('Could not complete your command')
-            print(e)
+            self.logger.error(e)
 
 
     @commands.command()
@@ -74,7 +77,8 @@ class EventCmd:
             await self.bot.say('```\n' + table + '```')
         except Exception as e:
             await self.bot.say('Could not complete your command')
-            print(e)
+            self.logger.error(e)
+
 
     @commands.command()
     async def view(self, name: str):
@@ -93,7 +97,7 @@ class EventCmd:
             await self.bot.say('```\n' + tabulate(info) + '```')
         except Exception as e:
             await self.bot.say('Could not complete your command')
-            print(e)
+            self.logger.error(e)
 
 def setup(bot, kwargs):
     bot.add_cog(EventCmd(bot, **kwargs))
