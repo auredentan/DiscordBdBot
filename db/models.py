@@ -35,3 +35,7 @@ class Command(Base):
     description = Column(TEXT)
     content = Column(TEXT)
 
+class Token(Base):
+    __tablename__ = 'token'
+    timestamp = Column(DATETIME, primary_key=True, nullable=False)
+    price = Column(INTEGER)

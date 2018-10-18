@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
-from sqlalchemy import engine, create_engine
-from sqlalchemy.orm import sessionmaker
+import sqlalchemy
 from datetime import datetime
 from tabulate import tabulate
 import logging

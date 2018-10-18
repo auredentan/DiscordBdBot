@@ -29,7 +29,6 @@ description = 'A nice little event bot'
 bot = commands.Bot(command_prefix='?', description=description)
 token = getenv('BOT_TOKEN')
 
-
 @bot.event
 async def on_ready():
     print(bot.user.id)
@@ -42,8 +41,9 @@ cogs = [
     ('ping', {}),
     ('event', {'session': session}),
     ('level', {'session': session}),
-    ('custom_command', {'session': session}),
     ('stats', {'session': session}),
+    ('music', {}),
+    #('wowtoken', {'session': session})
     ]
 
 if __name__ == '__main__':
@@ -58,7 +58,7 @@ if __name__ == '__main__':
     
     try:
         bot.run(token)
-    except Exception as e:
+    except Exception as error:
         print('Could Not Start Bot')
         logger.error(error)
     finally:
