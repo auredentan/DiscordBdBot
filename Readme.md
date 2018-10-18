@@ -12,8 +12,8 @@ It uses ``sqlalchemy`` to handle the database.
 
 **_Localy_**
 ```sh
-git clone https://github.com/auredentan/DiscordWithDbBot.git
-cd DiscordWithDbBot
+git clone https://github.com/auredentan/DiscordBdBot.git
+cd DiscordBdBot
 export BOT_TOKEN="your_bot_token" 
 pip install -r requirements.txt
 python bot.py
@@ -25,8 +25,8 @@ gunicorn website.app:app
 **_Deployment with [heroku](https://www.heroku.com/)_**
 
 ```sh
-git clone https://github.com/auredentan/DiscordWithDbBot.git
-cd DiscordWithDbBot
+git clone https://github.com/auredentan/DiscordBdBot.git
+cd DiscordBdBot
 heroku login
 heroku create
 heroku config:set BOT_TOKEN="your_bot_token"
