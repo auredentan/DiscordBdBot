@@ -1,7 +1,7 @@
 from sqlalchemy import Column
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.dialects.sqlite import DATETIME, INTEGER, TEXT
-
+from sqlalchemy.dialects.sqlite import DATETIME, INTEGER, TEXT, BOOLEAN
+import datetime
 Base = declarative_base()
 
 class Event(Base):
@@ -37,5 +37,16 @@ class Command(Base):
 
 class Token(Base):
     __tablename__ = 'token'
-    timestamp = Column(DATETIME, primary_key=True, nullable=False)
+    date = Column(DATETIME, primary_key=True, nullable=False)
     price = Column(INTEGER)
+
+
+class User(Base):
+    __tablename__ = "users"
+    id = Column(INTEGER, primary_key=True)
+    email = Column(TEXT, unique=True, nullable=False)
+    name = Column(TEXT, nullable=True)
+    avatar = Column(TEXT)
+    active = Column(BOOLEAN, default=False)
+    tokens = Column(TEXT)
+    created_at = Column(DATETIME, default=datetime.datetime.utcnow())

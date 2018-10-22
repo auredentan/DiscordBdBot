@@ -43,7 +43,7 @@ cogs = [
     ('level', {'session': session}),
     ('stats', {'session': session}),
     ('music', {}),
-    #('wowtoken', {'session': session})
+    ('wowtoken', {'session': session})
     ]
 
 if __name__ == '__main__':
