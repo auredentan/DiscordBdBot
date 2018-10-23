@@ -1,7 +1,14 @@
 A Discord bot with database and cogs
 ====================================
 
-This is a simple discord bot with an event and a level cog (extension).
+This is a simple discord bot with some cogs.
+
+The cogs are:
+* ``Level``: A level system.
+* ``Event``: A basic event system.
+* ``Music``: A music part that search and plays music on youtube.
+* ``Stats``: A little stat system.
+* ``Wowtoken``: A basic sytem that allow you to get the current wow token price .
 
 It uses ``sqlalchemy`` to handle the database.
 
