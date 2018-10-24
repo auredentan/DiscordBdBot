@@ -60,6 +60,7 @@ if __name__ == '__main__':
     except Exception as error:
         print('Could Not Start Bot')
         logger.error(error)
+        raise
     finally:
         print('Closing Session')
         session.close()
