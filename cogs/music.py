@@ -7,6 +7,8 @@ import logging
 """
     Necessary classes
 """
+from discord.ext.commands.bot import Bot
+from typing import Any, Dict
 class VoiceEntry:
     def __init__(self, message, player):
         self.requester = message.author
@@ -66,7 +68,7 @@ class Music:
     """Voice related commands.
     Works in multiple servers at once.
     """
-    def __init__(self, bot):
+    def __init__(self, bot: Bot) -> None:
         self.bot = bot
         self.voice_states = {}
         self.logger = logging.getLogger("DiscordBDBot.Music")
@@ -238,5 +240,5 @@ class Music:
 
 
 
-def setup(bot, kwargs):
+def setup(bot: Bot, kwargs: Dict[Any, Any]) -> None:
     bot.add_cog(Music(bot, **kwargs))

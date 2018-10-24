@@ -7,8 +7,11 @@ import logging
 
 from db.models import Base, Event, Member, Attendance
 
+from discord.ext.commands.bot import Bot
+from sqlalchemy.orm.session import Session
+from typing import Dict, Optional
 class EventCmd:
-    def __init__(self, bot, session=None):
+    def __init__(self, bot: Bot, session: Optional[Session] = None) -> None:
         self.bot = bot
         self.session = session
         self.logger = logging.getLogger('DiscordBDBot.Event')
@@ -98,5 +101,5 @@ class EventCmd:
             await self.bot.say('Could not complete your command')
             self.logger.error(e)
 
-def setup(bot, kwargs):
+def setup(bot: Bot, kwargs: Dict[str, Session]) -> None:
     bot.add_cog(EventCmd(bot, **kwargs))

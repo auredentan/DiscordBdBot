@@ -2,8 +2,11 @@ import discord
 from discord.ext import commands
 import logging
 
+from discord.ext.commands.bot import Bot
+from sqlalchemy.orm.session import Session
+from typing import Dict
 class Stats:
-    def __init__(self, bot, session):
+    def __init__(self, bot: Bot, session: Session) -> None:
         self.bot = bot
         self.session = session
         self.logger = logging.getLogger("DiscordBDBot.Stats")
@@ -54,5 +57,5 @@ class Stats:
             await self.bot.say(embed=message)
             
 
-def setup(bot, kwargs):
+def setup(bot: Bot, kwargs: Dict[str, Session]) -> None:
     bot.add_cog(Stats(bot, **kwargs))

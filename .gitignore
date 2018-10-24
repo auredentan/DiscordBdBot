@@ -115,6 +115,7 @@ dmypy.json
 
 #db
 *.db
+*.sqlite3
 
 #logs
 *.log

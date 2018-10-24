@@ -36,7 +36,6 @@ async def on_ready():
     print('---------------')
     print('This bot is ready for action!')
 
-helper = {}
 cogs = [
     ('ping', {}),
     ('event', {'session': session}),

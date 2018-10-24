@@ -32,8 +32,8 @@ class WowToken:
     
     def get_daily_api_token(self):
         url = "https://eu.battle.net/oauth/token?grant_type=client_credentials&client_id={}&client_secret={}".format(OAUTH2_CLIENT_ID, OAUTH2_CLIENT_SECRET)
-        access_token = requests.get(url).json()['access_token']
-        return access_token
+        tok = requests.get(url).json()['access_token']
+        return tok
         
 
     def get_wow_token_price(self, token):
@@ -60,6 +60,7 @@ class WowToken:
             await self.add_or_not(date, price)
             await asyncio.sleep(3600*6)
         except Exception as error:
+            print(error)
             self.logger.error(error)
     
     """
