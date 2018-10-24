@@ -14,4 +14,4 @@ install:
 
 script:
   - python tests.py
-  - mypy bot.py
+  - mypy --ignore-missing-imports bot.py
