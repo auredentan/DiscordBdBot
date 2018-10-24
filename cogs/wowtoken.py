@@ -18,7 +18,11 @@ import os
 
 PLOTLY_USERNAME = os.getenv('PLOTLY_USERNAME')
 PLOTLY_API_KEY = os.getenv('PLOTLY_API_KEY')
-plotly.tools.set_credentials_file(username=PLOTLY_USERNAME, api_key=PLOTLY_API_KEY)
+PLOTLY = False
+if PLOTLY_USERNAME and PLOTLY_API_KEY:
+    plotly.tools.set_credentials_file(username=PLOTLY_USERNAME, api_key=PLOTLY_API_KEY)
+    PLOTLY = False
+
 
 
 OAUTH2_CLIENT_ID = os.getenv('WOW_API_CLIENT_ID')

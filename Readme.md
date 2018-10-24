@@ -12,6 +12,36 @@ The cogs are:
 
 It uses ``sqlalchemy`` to handle the database.
 
+**Environement variables**
+==========================
+In order for the bot or some cogs to work you need to setup environnement variables (or replace in code directly)
+
+**Main bot**
+------------
+
+To launch the bot you need to have a token corresponding to your bot (you can get it on your discord bot page)
+
+```sh
+export BOT_TOKEN=<your_bot_token>
+```
+
+**Wowtoken cog**
+----------------
+
+It need your blizzard api infos in order to make api calls.
+
+```sh
+export WOW_API_CLIENT_ID=<your_blizzard_api_client_id>
+export WOW_API_CLIENT_SECRET=<your_blizzard_api_secret>
+```
+_Optionnal_
+
+Also this cog use Plotly to generate graphs.
+```sh
+export PLOTLY_USERNAME=<your_plotly_username>
+export PLOTLY_API_KEY=<your_plotly_api_key>
+```
+
 **Setup**
 =========
 

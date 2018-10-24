@@ -16,7 +16,7 @@ handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w'
 handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 logger.addHandler(handler)
 
-engine = create_engine('sqlite:///event-bot.db', echo=False)
+engine = create_engine('sqlite:///discord-bot.db', echo=False)
 Session = sessionmaker(bind=engine)
 session = Session()
 
