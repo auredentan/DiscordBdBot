@@ -3,7 +3,7 @@ A Discord bot with database and cogs
 
 This is a simple discord bot with some extensions (cogs).
 
-The cogs are:
+The current rogs are:
 * ``Level``: A level system.
 * ``Event``: A basic event system.
 * ``Music``: A music part that search and plays music on youtube.
