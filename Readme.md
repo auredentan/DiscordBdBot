@@ -1,7 +1,7 @@
 A Discord bot with database and cogs
 ====================================
 
-This is a simple discord bot with some cogs.
+This is a simple discord bot with some extensions (cogs).
 
 The cogs are:
 * ``Level``: A level system.
